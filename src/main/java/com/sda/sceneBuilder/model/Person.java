@@ -25,4 +25,52 @@ public class Person {
         this.postalCode = new SimpleStringProperty(postalCode);
         this.telephone = new SimpleStringProperty(telephone);
     }
+
+    public String getName() {
+        return name.get();
+    }
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname.get();
+    }
+
+    public StringProperty lastnameProperty() {
+        return lastname;
+    }
+
+    public String getStreet() {
+        return street.get();
+    }
+
+    public StringProperty streetProperty() {
+        return street;
+    }
+
+    public String getCity() {
+        return city.get();
+    }
+
+    public StringProperty cityProperty() {
+        return city;
+    }
+
+    public String getPostalCode() {
+        return postalCode.get();
+    }
+
+    public StringProperty postalCodeProperty() {
+        return postalCode;
+    }
+
+    public String getTelephone() {
+        return telephone.get();
+    }
+
+    public StringProperty telephoneProperty() {
+        return telephone;
+    }
 }

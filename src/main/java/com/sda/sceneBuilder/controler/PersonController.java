@@ -43,7 +43,20 @@ public class PersonController {
 
     public void initialize(){
         System.out.println("to jest test");
-        nameCol.setCellValueFactory(cell -> cell.getValue().getName());
-        lastNameCol.setCellValueFactory(cell->cell.getValue().getLastname());
+        nameCol.setCellValueFactory(cell -> cell.getValue().nameProperty());
+        lastNameCol.setCellValueFactory(cell->cell.getValue().lastnameProperty());
+        personTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldField, newField)->viewPersonInfoOnLabel(newField)
+        );
+    }
+
+    private void viewPersonInfoOnLabel(Person person) {
+
+        nameLabel.setText(person.getName());
+        lastNameLabel.setText(person.getLastname());
+        streetLabel.setText(person.getCity());
+        postalCodeLabel.setText(person.getPostalCode());
+        telephoneLabel.setText(person.getTelephone());
+        cityLabel.setText(person.getCity());
     }
 }
