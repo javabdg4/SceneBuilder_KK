@@ -83,6 +83,7 @@ public int index;
         if (alert.getResult() == ButtonType.YES) {
             Person personToDelete = personTableView.getSelectionModel().getSelectedItem();
             personView.getPersonList().remove(personToDelete);
+            NewPersonController.addToFile(personView.getPersonList());
 
             personView.loadDeletedPerson();
         }

@@ -17,6 +17,8 @@ public class Person {
     private StringProperty postalCode;
     private StringProperty telephone;
 
+    public Person (){}
+
     public Person(String name, String lastname, String street, String city, String postalCode, String telephone) {
         this.name = new SimpleStringProperty(name) ;
         this.lastname = new SimpleStringProperty(lastname);

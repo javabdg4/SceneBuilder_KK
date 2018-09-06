@@ -1,5 +1,6 @@
 package com.sda.sceneBuilder.controler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.sceneBuilder.model.Person;
 import com.sda.sceneBuilder.view.PersonView;
 import javafx.collections.ObservableList;
@@ -10,6 +11,9 @@ import javafx.stage.Stage;
 import lombok.Getter;
 
 import javafx.*;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class NewPersonController {
@@ -59,7 +63,9 @@ public class NewPersonController {
         if (!flag) {
             handleCancel(actionEvent);
             System.out.println("zapis");
-            personView.getPersonList().add(new Person(name.getText(), lastname.getText(), city.getText(), street.getText(), postalCode.getText(), telephone.getText()));
+            Person newPerson=new Person(name.getText(), lastname.getText(), city.getText(), street.getText(), postalCode.getText(), telephone.getText());
+            personView.getPersonList().add(newPerson);
+            addToFile(personView.getPersonList());
 
         } else {
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"" +
@@ -73,10 +79,21 @@ public class NewPersonController {
                 //setPersonEdit(person);
                 System.out.println("edycja");
                 System.out.println(person.toString());
+                addToFile(personView.getPersonList());
             }
         }
         handleCancel(actionEvent);
     }
+public static void addToFile(Object o){
+    File fileName=new File("users.json");
+    ObjectMapper objectMapper = new ObjectMapper();
+    try {
+        objectMapper.writeValue(fileName,o);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
 
     public void handleCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
