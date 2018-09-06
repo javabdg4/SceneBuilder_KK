@@ -14,10 +14,10 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Observable;
+
 @Getter
 public class Main extends Application {
 
-    private VBox vBox;
     private Stage stage;
     private PersonView personView;
 
@@ -26,27 +26,10 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        this.stage=primaryStage;
-
-        loadView();
-    }
-
-    public void loadView() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("/RootView.fxml"));
-        try {
-            vBox = (VBox) loader.load();
-            Scene scene= new Scene(vBox);
-            stage.setScene(scene);
-            stage.show();
-
-            PersonController personController=loader.getController();
-            PersonView personView=new PersonView();
-            personController.setPersonView(personView);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.stage = primaryStage;
+        personView = new PersonView(this.stage);
+        personView.loadView();
 
     }
+
 }

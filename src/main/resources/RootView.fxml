@@ -113,7 +113,7 @@
                               <Label fx:id="telephoneLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
-                        <Button layoutX="347.0" layoutY="257.0" mnemonicParsing="false" text="Save" textFill="#121212">
+                        <Button onAction="#handleSaveButton" layoutX="347.0" layoutY="257.0" mnemonicParsing="false" text="Save" textFill="#121212">
                            <effect>
                               <Lighting>
                                  <bumpInput>
@@ -125,7 +125,7 @@
                               </Lighting>
                            </effect>
                         </Button>
-                        <Button layoutX="213.0" layoutY="258.0" mnemonicParsing="false" text="Edit">
+                        <Button onAction="#handleEditButton" layoutX="213.0" layoutY="258.0" mnemonicParsing="false" text="Edit">
                            <effect>
                               <Lighting>
                                  <bumpInput>
@@ -137,7 +137,7 @@
                               </Lighting>
                            </effect>
                         </Button>
-                        <Button layoutX="275.0" layoutY="257.0" mnemonicParsing="false" text="Delete">
+                        <Button onAction="#handleDeleteButton" layoutX="275.0" layoutY="257.0" mnemonicParsing="false" text="Delete">
                            <effect>
                               <Lighting>
                                  <bumpInput>
@@ -149,7 +149,7 @@
                               </Lighting>
                            </effect>
                         </Button>
-                        <Button layoutX="149.0" layoutY="257.0" mnemonicParsing="false" text="New">
+                        <Button onAction="#handleNewButton" layoutX="149.0" layoutY="257.0" mnemonicParsing="false" text="New">
                            <effect>
                               <Lighting>
                                  <bumpInput>
