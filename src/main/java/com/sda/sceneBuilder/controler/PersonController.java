@@ -5,6 +5,8 @@ import com.sda.sceneBuilder.view.PersonView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import lombok.Getter;
 import com.sda.sceneBuilder.view.PersonView;
 
@@ -52,14 +54,14 @@ public int index;
     }
 
     private void viewPersonInfoOnLabel(Person person) {
-
-        nameLabel.setText(person.getName());
-        lastNameLabel.setText(person.getLastname());
-        streetLabel.setText(person.getCity());
-        postalCodeLabel.setText(person.getPostalCode());
-        telephoneLabel.setText(person.getTelephone());
-        cityLabel.setText(person.getCity());
-
+if (person!=null) {
+    nameLabel.setText(person.getName());
+    lastNameLabel.setText(person.getLastname());
+    streetLabel.setText(person.getCity());
+    postalCodeLabel.setText(person.getPostalCode());
+    telephoneLabel.setText(person.getTelephone());
+    cityLabel.setText(person.getCity());
+}
     }
 
     public void handleEditButton(ActionEvent actionEvent) {
@@ -67,8 +69,6 @@ public int index;
 
         Person selectedPerson = personTableView.getSelectionModel().getSelectedItem();
         index=personTableView.getSelectionModel().getFocusedIndex();
-
-
         personView.loadEditPerson(selectedPerson,index);
     }
 
@@ -79,6 +79,7 @@ public int index;
                         "Are you sure?",
                         ButtonType.YES,
                         ButtonType.NO);
+        ((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/imagesAlert.png"));
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
             Person personToDelete = personTableView.getSelectionModel().getSelectedItem();

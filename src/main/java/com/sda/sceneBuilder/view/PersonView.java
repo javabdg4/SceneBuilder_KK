@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -68,7 +69,10 @@ public class PersonView {
         }
 
         Stage newPersonStage = new Stage();
+
+
         Scene newPersonScene = new Scene(newPersonView);
+        newPersonStage.getIcons().add(new Image(Main.class.getResourceAsStream("/indeks.png")));
         newPersonStage.setScene(newPersonScene);
         newPersonStage.show();
 
@@ -93,7 +97,9 @@ public class PersonView {
         }
 
         Stage newPersonStage = new Stage();
+
         Scene newPersonScene = new Scene(newPersonView);
+        newPersonStage.getIcons().add(new Image(Main.class.getResourceAsStream("/indeks.png")));
         newPersonStage.setScene(newPersonScene);
         newPersonStage.show();
 
@@ -112,6 +118,7 @@ public class PersonView {
         try {
             vBox = (VBox) loader.load();
             Scene scene = new Scene(vBox);
+           stage.getIcons().add(new Image(Main.class.getResourceAsStream("/indeks.png")));
             stage.setScene(scene);
             stage.show();
 
