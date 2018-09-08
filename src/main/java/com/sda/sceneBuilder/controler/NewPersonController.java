@@ -85,6 +85,7 @@ public class NewPersonController {
         handleCancel(actionEvent);
     }
 public static void addToFile(Object o){
+
     File fileName=new File("users.json");
     ObjectMapper objectMapper = new ObjectMapper();
     try {

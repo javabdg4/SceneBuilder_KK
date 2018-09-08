@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Getter
@@ -34,27 +35,30 @@ public class PersonView {
         this.stage = stage;
         File filename = new File("users.json");
 
-        PersonJson[] readPersonsArray = readFromFile(filename);
+        PersonJson[] readPersonsArray;
+        try {
+            readPersonsArray = readFromFile(filename);
+            for (PersonJson current : readPersonsArray) {
 
-        for (PersonJson current : readPersonsArray) {
-
-            personList.add(new Person(current.getName(),current.getLastname(),current.getStreet(),current.getCity(),current.getPostalCode(),current.getTelephone()));
+                personList.add(new Person(current.getName(), current.getLastname(), current.getStreet(), current.getCity(), current.getPostalCode(), current.getTelephone()));
+            }
+        } catch (IOException e) {
+            NewPersonController.addToFile(new Person("Pierwsza","Osoba","","","",""));
         }
+
+
+
         // personList.add(new Person("jan", "kowalski", "kwiatowa", "Miasto", "11111", "444444444444"));
         // personList.add(new Person("Adam", "Iksinski", "Uliczna", "Metropolia", "33333", "7777777777"));
         // personList.add(new Person("Marek", "Przykładowski", "Uliczyńska", "Miejscowość", "8888", "77776555555"));
 
     }
 
-    public static PersonJson[] readFromFile(File filename) {
+    public static PersonJson[] readFromFile(File filename) throws IOException {
         ObjectMapper obM = new ObjectMapper();
-        try {
-            return obM.readValue(filename, PersonJson[].class);
-        } catch (IOException e) {
 
-            e.printStackTrace();
-            return null;
-        }
+            return obM.readValue(filename, PersonJson[].class);
+
 
     }
 
